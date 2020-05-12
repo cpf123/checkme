@@ -22,7 +22,7 @@ import java.net.URI;
 
 public class ChainMapReduce {
 
-    //定义输入输出路径
+    // 定义输入输出路径
     private static final String INPUTPATH = "hdfs://liaozhongmin21:8020/chainFiles/*";
     private static final String OUTPUTPATH = "hdfs://liaozhongmin21:8020/out";
 
