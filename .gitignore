@@ -1,0 +1,51 @@
+# Created by .ignore support plugin (hsz.mobi)
+### Example user template template
+### Example user template
+
+# IntelliJ project files
+.idea
+*.iml
+out
+gen
+.idea/.gitignore
+.idea/.name
+.idea/codeStyles/
+.idea/compiler.xml
+.idea/encodings.xml
+.idea/inspectionProfiles/
+.idea/libraries/
+.idea/misc.xml
+.idea/modules.xml
+.idea/sbt.xml
+.idea/scala_compiler.xml
+.idea/uiDesigner.xml
+
+src/main/antlr3/
+src/main/antlr4/
+src/main/java/DDL/
+src/main/java/DataCheckApp.java
+src/main/java/TestGetTableApp.java
+src/main/java/adapter/
+src/main/java/com/sql/antlr3.zip
+src/main/java/com/sql/antlr3/hive/FromClauseParser.tokens
+src/main/java/com/sql/antlr3/hive/HiveLexer.java
+src/main/java/com/sql/antlr3/hive/HiveLexer.tokens
+src/main/java/com/sql/antlr3/hive/HiveParser.java
+src/main/java/com/sql/antlr3/hive/HiveParser.tokens
+src/main/java/com/sql/antlr3/hive/HiveParser_FromClauseParser.java
+src/main/java/com/sql/antlr3/hive/HiveParser_IdentifiersParser.java
+src/main/java/com/sql/antlr3/hive/HiveParser_ResourcePlanParser.java
+src/main/java/com/sql/antlr3/hive/HiveParser_SelectClauseParser.java
+src/main/java/com/sql/antlr3/hive/IdentifiersParser.tokens
+src/main/java/com/sql/antlr3/hive/ResourcePlanParser.tokens
+src/main/java/com/sql/antlr3/hive/SelectClauseParser.tokens
+src/main/java/com/sql/antlr3/hive/parse/
+src/main/java/com/sql/antlr4/
+src/main/java/config/
+src/main/java/entity/
+
+src/main/resources/dbConfig.properties
+src/main/resources/ftl/
+src/main/resources/log4j2.xml
+src/main/scala/
+target/
