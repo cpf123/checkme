@@ -36,7 +36,7 @@ SELECT * FROM
                 ELSE A.t_end_time --
            END AS t_end_time
     FROM dws.user_his AS A          -- 拉链表
-    LEFT JOIN ods.user_update AS B  -- 维度表  情况一： 维度表端有数据 有效 情况二：维度表端无数据 字段失效 备注失效时间
+    LEFT JOIN ods.user_update AS B  -- 维度表  情况一：维度表端有数据 有效 情况二：维度表端无数据 字段失效 备注失效时间
       ON A.user_num = B.user_num
 UNION                              -- 合并  新增的改变的维度字段
     SELECT C.user_num,
