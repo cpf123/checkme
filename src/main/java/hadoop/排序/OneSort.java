@@ -12,6 +12,10 @@ import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 
 import java.io.IOException;
 
+/**
+ * 注意：
+ * MapReduce框架已经按照key值对这些数据按键排序了，就是shuffle()
+ */
 // goods_visit1中包含（商品id ，点击次数）两个字段，内容以“\t”分割
 // 对商品点击次数由低到高进行排序
 public class OneSort {
@@ -30,10 +34,13 @@ public class OneSort {
         }
     }
 
-    // 在数据达到reducer之前，MapReduce框架已经按照key值对这些数据按键排序了，就是shuffle()
-    // 如果key为封装的int为IntWritable类型，那么MapReduce按照数字大小对key排序
-    // 如果Key为封装String的Text类型，那么MapReduce将按照数据字典顺序对字符排序
-    // 所以一般在map中把要排序的字段使用IntWritable类型，作为key，不排序的字段作为value
+    /**
+     *   在数据达到reducer之前，MapReduce框架已经按照key值对这些数据按键排序了，就是shuffle()
+     *
+     *      如果key为封装的int为IntWritable类型，那么MapReduce按照数字大小对key排序
+     *      如果Key为封装String的Text类型，那么MapReduce将按照数据字典顺序对字符排序
+     *      所以一般在map中把要排序的字段使用IntWritable类型，作为key，不排序的字段作为value
+     */
     public static class Reduce extends Reducer<IntWritable, Text, IntWritable, Text> {
         @Override
         protected void reduce(IntWritable key, Iterable<Text> values, Context context) throws IOException, InterruptedException {
