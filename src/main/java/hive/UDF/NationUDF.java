@@ -15,6 +15,7 @@ public class NationUDF extends UDF {
         nationMap.put("U.S.A", "美国");
     }
 
+
     public Text evaluate(Text nation){
         String nationStr = nation.toString();
         String result = nationMap.get(nationStr);
