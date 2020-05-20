@@ -1,4 +1,4 @@
-package 网络.rpc.客户端;
+package 网络.rpc.hadoop.客户端;
 
 /**
  * 登录接口

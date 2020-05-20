@@ -1,4 +1,4 @@
-package 网络.rpc.服务端;
+package 网络.rpc.hadoop.服务端;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.ipc.RPC;

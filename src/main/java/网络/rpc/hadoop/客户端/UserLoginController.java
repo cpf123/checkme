@@ -1,4 +1,4 @@
-package 网络.rpc.客户端;
+package 网络.rpc.hadoop.客户端;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.ipc.RPC;
@@ -6,7 +6,6 @@ import org.apache.hadoop.ipc.RPC;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
-import java.util.concurrent.ConcurrentHashMap;
 
 
 /**
