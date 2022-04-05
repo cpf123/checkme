@@ -1,17 +1,6 @@
 package testjava;
 
-import akka.dispatch.Foreach;
-import com.bj58.geo.common.MapType;
-import com.bj58.geo.common.geometry.Circle;
-import com.bj58.geo.common.geometry.Point;
-import com.bj58.geo.poi.contract.IPoiService;
-import com.bj58.geo.poi.entity.*;
-import com.bj58.spat.scf.client.SCFInit;
-import com.bj58.spat.scf.client.proxy.builder.ProxyFactory;
-import com.bj58.zhaopin.zcmbase.contract.service.IZcmUserService;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import org.apache.commons.lang3.StringUtils;
+
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
