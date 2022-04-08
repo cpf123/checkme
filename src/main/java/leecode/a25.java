@@ -99,7 +99,15 @@ public class a25 {
             ListNode curNode = head;
             //下一个节点指针
             ListNode nextNode = null;
-            while (curNode != null) {
+            while (curNode != null) { // !!!! 出错
+                /**
+                 * preNode  curNode -> nextNode
+                 * preNode <- curNode  nextNode
+                 * preNode <- curNode  nextNode
+                 *    |          |
+                 * curNode    nextNode ->  xx
+                 */
+
                 nextNode = curNode.next;//nextNode 指向下一个节点,保存当前节点后面的链表。
                 curNode.next = preNode;//将当前节点next域指向前一个节点   null<-1<-2<-3<-4
                 preNode = curNode;//preNode 指针向后移动。preNode指向当前节点。
