@@ -13,12 +13,7 @@ import org.apache.hadoop.hbase.{HBaseConfiguration, KeyValue, TableName}
 import org.apache.hadoop.mapreduce.Job
 import org.apache.spark.{SparkConf, SparkContext}
 
-/**
- * Created by hun on 2016/10/17.
- *
- * 终于成功了
- *
- */
+
 object doBulkLoadtest {
 
   def main(args: Array[String]): Unit = {
