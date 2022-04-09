@@ -4,7 +4,10 @@ import java.io.IOException;
 import java.net.InetSocketAddress;
 
 /**
- * Created by Liuxd on 2018-09-14.
+ * 可以采用基于JSON数据传输的RPC框架；
+ * 可以使用NIO或直接使用Netty替代BIO实现；
+ * 使用开源的序列化机制，如Hadoop Avro与Google protobuf等；
+ * 服务注册可以使用Zookeeper进行管理，能够让应用更加稳定。
  */
 public class RPCController {
 

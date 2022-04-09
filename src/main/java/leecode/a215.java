@@ -36,6 +36,19 @@ public class a215 {
             return pq.peek();
         }
 
+    /**
+     * 时间复杂度：O(n)O(n)，如上文所述，证明过程可以参考「《算法导论》9.2：期望为线性的选择算法」。
+     * 空间复杂度：O(\log n)O(logn)，递归使用栈空间的空间代价的期望为 O(\log n)O(logn)。
+     *
+     * 作者：LeetCode-Solution
+     * 链接：https://leetcode-cn.com/problems/kth-largest-element-in-an-array/solution/shu-zu-zhong-de-di-kge-zui-da-yuan-su-by-leetcode-/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     * @param nums
+     * @param k
+     * @return
+     */
+
         // 法2 自己手写堆 1ms
         public int findKthLargest2(int[] nums, int k) {
             int len = nums.length;
@@ -95,6 +108,19 @@ public class a215 {
             nums[j] = tmp;
         }
 
+    /**
+     * 时间复杂度：O(n \log n)O(nlogn)，建堆的时间代价是 O(n)O(n)，删除的总代价是 O(k \log n)O(klogn)，因为 k < nk<n，
+     * 故渐进时间复杂为 O(n + k \log n) = O(n \log n)O(n+klogn)=O(nlogn)。
+     * 空间复杂度：O(\log n)O(logn)，即递归使用栈空间的空间代价。
+     *
+     * 作者：LeetCode-Solution
+     * 链接：https://leetcode-cn.com/problems/kth-largest-element-in-an-array/solution/shu-zu-zhong-de-di-kge-zui-da-yuan-su-by-leetcode-/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     * @param nums
+     * @param k
+     * @return
+     */
         // 法3 快速选择算法，o（n）的复杂度，n指的是元素个数。。。
         public int findKthLargest(int[] nums, int k) {
             int len = nums.length;
