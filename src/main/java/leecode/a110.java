@@ -15,7 +15,6 @@ public class a110 {
         public boolean isBalanced(TreeNode root) {
             return height(root) >= 0;
         }
-
         public int height(TreeNode root) {
             if (root == null) {
                 return 0;
