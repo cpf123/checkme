@@ -76,7 +76,7 @@ class MyQueueDemo<T> {
         return rear - front;
     }
 
-    //获取对手元素
+    //获取对首元素
     public T getFront() {
         if (isEmpty()) {
             return null;
