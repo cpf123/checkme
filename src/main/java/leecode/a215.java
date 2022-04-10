@@ -12,14 +12,72 @@ public class a215 {
      */
 
     public static void main(String[] args) {
-        int[] ints = {1, 3, 4, 6, 2};
+        int[] ints = {1, 3, 3,4, 2};
         a215 a215 = new a215();
 
         int kthLargest =  new a215().findKthLargest(ints,2);
         System.out.println(kthLargest);
     }
 
-        // 法1 api堆 4ms
+    /**
+     * 时间复杂度：O(n)O(n)，如上文所述，证明过程可以参考「《算法导论》9.2：期望为线性的选择算法」。
+     * 空间复杂度：O(\log n)O(logn)，递归使用栈空间的空间代价的期望为 O(\log n)O(logn)。
+     *
+     * 作者：LeetCode-Solution
+     * 链接：https://leetcode-cn.com/problems/kth-largest-element-in-an-array/solution/shu-zu-zhong-de-di-kge-zui-da-yuan-su-by-leetcode-/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     * @param nums
+     * @param k
+     * @return
+     */
+    // 法3 快速选择算法，o（n）的复杂度，n指的是元素个数。。。
+    public int findKthLargest(int[] nums, int k) {
+        int len = nums.length;
+        int index = len - k;
+        int left = 0, right = len - 1;
+
+        while (left <= right) {
+            int res = partition(nums, left, right); // 返回 左边小于 res，右边大于res的数组
+            if (res < index) {
+                left = res + 1;
+            } else if (index < res) {
+                right = res - 1;
+            } else if (index == res) { // 索引一样则返回
+                return nums[index];
+            }
+        }
+
+        return -1;
+    }
+    public int partition(int[] nums, int left, int right) {
+        // 改成 每次选 中间的 索引后，从8ms变成了1ms。。。
+        // 不能每次都选择 最左边的 元素
+        int tmp = left;
+        left = left + (right - left) / 2;
+        swap(nums, left, tmp);
+        left = tmp;
+
+        int pivot = nums[left];// 中间值 left = left + (right - left) / 2;
+        int i = left + 1;
+        int j = right;
+        while (i <= j) {
+            while (i <= j && nums[i] <= pivot) {
+                i++;
+            }
+            while (i <= j && nums[j] > pivot) {
+                j--;
+            }
+            if (i > j) { // i j 是否反向交叉
+                break;
+            }
+            swap(nums, i, j);
+        }
+        swap(nums, left, j);
+        return j;
+    }
+
+    // 法1 api堆 4ms
         public int findKthLargest1(int[] nums, int k) {
             // 默认是小顶堆，api一般都是从小到大升序排列的。
             PriorityQueue<Integer> pq = new PriorityQueue<>();
@@ -37,8 +95,9 @@ public class a215 {
         }
 
     /**
-     * 时间复杂度：O(n)O(n)，如上文所述，证明过程可以参考「《算法导论》9.2：期望为线性的选择算法」。
-     * 空间复杂度：O(\log n)O(logn)，递归使用栈空间的空间代价的期望为 O(\log n)O(logn)。
+     * 时间复杂度：O(nlogn)，建堆的时间代价是 O(n)O(n)，删除的总代价是 O(k \log n)O(klogn)，因为 k < nk<n，
+     * 故渐进时间复杂为 O(n + k \log n) = O(n \log n)O(n+klogn)=O(nlogn)。
+     * 空间复杂度：O(\log n)O(logn)，即递归使用栈空间的空间代价。
      *
      * 作者：LeetCode-Solution
      * 链接：https://leetcode-cn.com/problems/kth-largest-element-in-an-array/solution/shu-zu-zhong-de-di-kge-zui-da-yuan-su-by-leetcode-/
@@ -47,10 +106,7 @@ public class a215 {
      * @param nums
      * @param k
      * @return
-     */
-
-        // 法2 自己手写堆 1ms
-        public int findKthLargest2(int[] nums, int k) {
+     */        public int findKthLargest2(int[] nums, int k) {
             int len = nums.length;
             // 对前k个元素，构成小顶堆
             for (int i = 0; i < k; i++) {
@@ -108,64 +164,6 @@ public class a215 {
             nums[j] = tmp;
         }
 
-    /**
-     * 时间复杂度：O(n \log n)O(nlogn)，建堆的时间代价是 O(n)O(n)，删除的总代价是 O(k \log n)O(klogn)，因为 k < nk<n，
-     * 故渐进时间复杂为 O(n + k \log n) = O(n \log n)O(n+klogn)=O(nlogn)。
-     * 空间复杂度：O(\log n)O(logn)，即递归使用栈空间的空间代价。
-     *
-     * 作者：LeetCode-Solution
-     * 链接：https://leetcode-cn.com/problems/kth-largest-element-in-an-array/solution/shu-zu-zhong-de-di-kge-zui-da-yuan-su-by-leetcode-/
-     * 来源：力扣（LeetCode）
-     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
-     * @param nums
-     * @param k
-     * @return
-     */
-        // 法3 快速选择算法，o（n）的复杂度，n指的是元素个数。。。
-        public int findKthLargest(int[] nums, int k) {
-            int len = nums.length;
-            int index = len - k;
-            int left = 0, right = len - 1;
-
-            while (left <= right) {
-                int res = partition(nums, left, right); // 返回 左边小于 res，右边大于res的数组
-                if (res < index) {
-                    left = res + 1;
-                } else if (index < res) {
-                    right = res - 1;
-                } else if (index == res) { // 索引一样则返回
-                    return nums[index];
-                }
-            }
-
-            return -1;
-        }
-        public int partition(int[] nums, int left, int right) {
-            // 改成 每次选 中间的 索引后，从8ms变成了1ms。。。
-            // 不能每次都选择 最左边的 元素
-            int tmp = left;
-            left = left + (right - left) / 2;
-            swap(nums, left, tmp);
-            left = tmp;
-
-            int pivot = nums[left];// 中间值 left = left + (right - left) / 2;
-            int i = left + 1;
-            int j = right;
-            while (i <= j) {
-                while (i <= j && nums[i] <= pivot) {
-                    i++;
-                }
-                while (i <= j && nums[j] > pivot) {
-                    j--;
-                }
-                if (i > j) {
-                    break;
-                }
-                swap(nums, i, j);
-            }
-            swap(nums, left, j);
-            return j;
-        }
 
 
     }
